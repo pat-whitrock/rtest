@@ -4,5 +4,4 @@ class Assertion
   def initialize(value)
     @value = value
   end
-
 end

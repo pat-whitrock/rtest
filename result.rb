@@ -1,8 +1,7 @@
 class Result
-
-  def initialize(expectation:, assertion:)
-    @expectation = expectation
-    @assertion = assertion
+  def initialize(asserted_value:, expected_value:)
+    @asserted_value = asserted_value
+    @expected_value = expected_value
   end
 
   def message
@@ -10,15 +9,14 @@ class Result
   end
 
   def success?
-    expectation == assertion
+    expected_value == asserted_value
   end
 
   private
 
-  attr_reader :assertion, :expectation
+  attr_reader :asserted_value, :expected_value
 
   def failure_message
-    "  - #{expectation} does not equal #{assertion}."
+    "  - #{expected_value} does not equal #{asserted_value}."
   end
-
 end

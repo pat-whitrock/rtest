@@ -6,11 +6,10 @@ class Expectation
   end
 
   def to(assertion)
-    @result = Result.new(expectation: value, assertion: assertion.value)
+    @result = Result.new(expected_value: value, asserted_value: assertion.value)
   end
 
   private
 
   attr_reader :value
-
 end

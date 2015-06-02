@@ -1,11 +1,10 @@
 class ExampleGroup
-
   def initialize(message)
     @message = message
   end
 
   def define_example_group(description, &block)
-    new(amended_message(description)).instance_eval(&block)
+    self.class.new(amended_message(description)).instance_eval(&block)
   end
   [:context, :describe].each { |meth| alias_method meth, :define_example_group }
 
@@ -20,5 +19,4 @@ class ExampleGroup
   def amended_message(description)
     "#{message} #{description}"
   end
-
 end

@@ -1,5 +1,4 @@
 class Test
-
   def initialize(message)
     @message = message
     @expectations = []
@@ -31,11 +30,10 @@ class Test
   attr_reader :expectations, :message
 
   def failed_results
-    results.reject(&:success?)
+    @failed_results ||= results.reject(&:success?)
   end
 
   def results
-    expectations.map(&:result)
+    @results ||= expectations.map(&:result)
   end
-
 end
